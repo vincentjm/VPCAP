@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>VPCAP</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.red.css" id='jQMnDColor' />
+
+		<!-- jQuery / jQueryMobile Scripts -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+		<script type='application/javascript' src='js/fastclick.js'></script>
+
+
+    </head>
+    <body>
+
+    <div data-role="page" data-theme='b'>
+
+
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="index.html" data-ajax="false"><i class='fa fa-bars'></i></a>
+            <h1>VPC Appearance Products</h1>
+            <h3>Station Setup</h3>
+        </div>
+
+        <div data-role="content" data-inset="true">
+
+            <form>
+            <table data-role='table' id='table-column-toggle' data-mode='none' class='ui-responsive table-stroke'>
+            <tr>
+            <th>Lane - North
+            </th>
+            <th>Lane - South
+            </th>
+            </tr>
+            <tr>
+            <td>
+                        <fieldset data-role="controlgroup">
+                            <input type="radio" name="station" id="radio-1-01" value="01">
+                            <label for="radio-1-01">Station #1</label>
+                            <input type="radio" name="station" id="radio-1-03" value="03">
+                            <label for="radio-1-03">Station #3</label>
+                            <input type="radio" name="station" id="radio-1-05" value="05">
+                            <label for="radio-1-05">Station #5</label>
+                            <input type="radio" name="station" id="radio-1-07" value="07">
+                            <label for="radio-1-07">Station #7</label>
+                            <input type="radio" name="station" id="radio-1-09" value="09">
+                            <label for="radio-1-09">Station #9</label>
+                            <input type="radio" name="station" id="radio-1-11" value="11">
+                            <label for="radio-1-11">Station #11</label>
+                        </fieldset>
+            </td>
+
+            <td>
+                        <fieldset data-role="controlgroup">
+                            <input type="radio" name="station" id="radio-1-02" value="02">
+                            <label for="radio-1-02">Station #2</label>
+                            <input type="radio" name="station" id="radio-1-04" value="04">
+                            <label for="radio-1-04">Station #4</label>
+                            <input type="radio" name="station" id="radio-1-06" value="06">
+                            <label for="radio-1-06">Station #6</label>
+                            <input type="radio" name="station" id="radio-1-08" value="08">
+                            <label for="radio-1-08">Station #8</label>
+                            <input type="radio" name="station" id="radio-1-10" value="10">
+                            <label for="radio-1-10">Station #10</label>
+                            <input type="radio" name="station" id="radio-1-12" value="12">
+                            <label for="radio-1-12">Station #12</label>
+                        </fieldset>
+            </td>
+
+            </tr>
+
+            </table>
+							<button type="submit" data-inline='false'><i class='lIcon fa fa-check'></i>Submit</button>
+							<button type="reset" data-inline='false'><i class='lIcon fa fa-times'></i>Cancel</button>
+
+
+            </form>
+		</div>
+
+		<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="stationsetup.html"><i class='blIcon fa fa-tablet'></i>Station Setup</a></li>
+					<li><a href="usersetup.html"><i class='blIcon fa fa-user'></i>User Setup</a></li>
+				</ul>
+			</div>
+		</div>
+
+    </div>
+
+    </body>
+</html>
