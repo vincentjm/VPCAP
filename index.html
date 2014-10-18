@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>nativeDroid - Theme for jQuery Mobile</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.red.css" id='jQMnDColor' />
+
+		<!-- jQuery / jQueryMobile Scripts -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+
+    </head>
+    <body>
+
+    <div data-role="page" data-theme='b'>
+
+
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="index.html" data-ajax="false"><i class='fa fa-bars'></i></a>
+            <h1>VPC Appearance Products</h1>
+            <h3>Process Vehicle</h3>
+        </div>
+
+        <div data-role="content">
+
+            <form>
+                <ul data-role="listview" data-inset="true">
+
+                    <li data-role="fieldcontain">
+                        <label for="vin">VIN</label>
+                        <input type="text" name="vin" id="vin" value="" data-clear-btn="true" placeholder="Type or scan VIN here ...">
+                    </li>
+
+                    <li data-role="fieldcontain">
+                        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                            <legend>Accessory 1</legend>
+                            <input type="radio" name="radio-1" id="radio-1-no" value="no" checked="checked">
+                            <label for="radio-1-no">Not Installed</label>
+                            <input type="radio" name="radio-1" id="radio-1-yes" value="yes">
+                            <label for="radio-1-yes">Installed</label>
+                        </fieldset>
+                    </li>
+
+                    <li data-role="fieldcontain">
+                        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                            <legend>Accessory 2</legend>
+                            <input type="radio" name="radio-2" id="radio-2-no" value="no" checked="checked">
+                            <label for="radio-2-no">Not Installed</label>
+                            <input type="radio" name="radio-2" id="radio-2-yes" value="yes">
+                            <label for="radio-2-yes">Installed</label>
+                        </fieldset>
+                    </li>
+
+                    <li data-role="fieldcontain">
+                        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                            <legend>Accessory 3</legend>
+                            <input type="radio" name="radio-3" id="radio-3-no" value="no" checked="checked">
+                            <label for="radio-3-no">Not Installed</label>
+                            <input type="radio" name="radio-3" id="radio-3-yes" value="yes">
+                            <label for="radio-3-yes">Installed</label>
+                        </fieldset>
+                    </li>
+
+                    <li>
+							<button type="submit" data-inline='true'><i class='lIcon fa fa-check'></i>Submit</button>
+							<button type="reset" data-inline='true'><i class='lIcon fa fa-times'></i>Cancel</button>
+                    </li>
+                </ul>
+            </form>
+
+
+		</div>
+
+		<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="stationsetup.html"><i class='blIcon fa fa-tablet'></i>Station Setup</a></li>
+					<li><a href="usersetup.html"><i class='blIcon fa fa-user'></i>User Setup</a></li>
+				</ul>
+			</div>
+		</div>
+
+    </div>
+
+    </body>
+</html>
