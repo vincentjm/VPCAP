@@ -27,6 +27,9 @@ var app = {
     // `load`, `deviceready`, `offline`, and `online`.
     bindEvents: function() {
         document.getElementById('scan').addEventListener('click', this.scan, false);
+
+		FastClick.attach(document.body);
+
     },
 
     scan: function() {
