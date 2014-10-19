@@ -117,7 +117,7 @@ width: 91px;
 	margin: 3px 25px 7px 55px;
 	padding: 7px 0px 0px 0px;
 	font-size: 25px;
-	font-weight: 100;
+	font-weight: 400;
 }
 
 .ui-mobile label, div.ui-controlgroup-label,
@@ -146,6 +146,7 @@ width: 91px;
 
 body, input, select, textarea, button, .ui-btn {
 	line-height: auto;
+	background-color: red;
 }
 
 .ui-header .ui-btn-inner, .ui-footer .ui-btn-inner, .ui-mini .ui-btn-inner {
