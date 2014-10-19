@@ -23,6 +23,8 @@
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 
+		<script src="js/jquery.jsonp-2.4.0.min.js"></script>
+
 		<script type='application/javascript' src='js/fastclick.js'></script>
 		<script type='application/javascript' src='js/index.js'></script>
 
@@ -48,16 +50,22 @@
 					<h2>&nbsp;</h2>
 					<h2>&nbsp;</h2>
 					<h2>&nbsp;</h2>
+
                     <li data-role="fieldcontain">
                         <label for="vin">&nbsp;&nbsp;VIN</label>
-                        <input type="text" name="vin" id="vin" value="" autofocus data-clear-btn="true" placeholder="Type or scan VIN here ...">
+                        <input type="text" name="vin" id="vinTxtBox" value="" autofocus data-clear-btn="true" placeholder="Type or scan VIN here ...">
+                    </li>
+
+                    <li data-role="fieldcontain">
+                        <label for="vehicleModel">&nbsp;&nbsp;Model</label>
+                        <label id="vehicleModel" name="vehicleModel" value="">
                     </li>
 
 					<h2>&nbsp;</h2>
 					<h2>&nbsp;</h2>
 
                     <li>
-							<button type="submit" data-inline='false'><i class='lIcon fa fa-check'></i>Lookup</button>
+							<button type="button" id="vinlookup" data-inline='false'><i class='lIcon fa fa-check'></i>Lookup</button>
 							<button type="reset" data-inline='false'><i class='lIcon fa fa-times'></i>Cancel</button>
                     </li>
                 </ul>
