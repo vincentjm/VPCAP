@@ -32,7 +32,7 @@
     </head>
     <body >
 
-    <div data-role="page" data-theme='b'>
+    <div data-role="page" id="lookup" data-theme='b'>
 
 
         <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
@@ -51,20 +51,60 @@
 					<h2>&nbsp;</h2>
 
                     <li data-role="fieldcontain">
-                        <label for="vin">&nbsp;&nbsp;VIN</label>
-                        <input type="text" name="vin" id="vinTxtBox" value="" autofocus data-clear-btn="true" placeholder="Type or scan VIN here ...">
-                    </li>
-
-                    <li data-role="fieldcontain">
-                        <label for="vehicleModel">&nbsp;&nbsp;Model</label>
-                        <label id="vehicleModel" name="vehicleModel" value="">
+                        <label for="lookupVIN">&nbsp;&nbsp;VIN</label>
+                        <input type="text" name="lookupVIN" id="lookupVIN" value="" autofocus data-clear-btn="true" placeholder="Type or scan VIN here ...">
                     </li>
 
 					<h2>&nbsp;</h2>
 					<h2>&nbsp;</h2>
 
                     <li>
-							<button type="button" id="vinlookup" data-inline='false'><i class='lIcon fa fa-check'></i>Lookup</button>
+							<button type="submit" id="vinlookup" data-inline='false'><i class='lIcon fa fa-check'></i>Lookup</button>
+                    </li>
+                </ul>
+
+
+		</div>
+
+		<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="stationsetup.html"><i class='blIcon fa fa-tablet'></i>Station Setup</a></li>
+					<li><a href="usersetup.html"><i class='blIcon fa fa-user'></i>User Setup</a></li>
+				</ul>
+			</div>
+		</div>
+
+    </div>
+
+    <div data-role="page" id="process" data-theme='b'>
+
+
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="index.html" data-ajax="false"><i class='fa fa-bars'></i></a>
+            <h1>VPC Appearance Products</h1>
+            <h5>Station 1</h5>
+        </div>
+
+        <div data-role="content">
+
+                <ul data-role="listview" data-inset="true">
+
+                    <li data-role="fieldcontain">
+                        <label for="processVIN">&nbsp;&nbsp;VIN</label>
+                        <label id="processVIN" name="processVIN" value="">
+                    </li>
+
+                    <li data-role="fieldcontain">
+                        <label for="processModel">&nbsp;&nbsp;Model</label>
+                        <label id="processModel" name="processModel" value="">
+                    </li>
+
+					<h2>&nbsp;</h2>
+					<h2>&nbsp;</h2>
+
+                    <li>
+							<button type="submit" id="vinlookup" data-inline='false'><i class='lIcon fa fa-check'></i>Complete</button>
                     </li>
                 </ul>
 

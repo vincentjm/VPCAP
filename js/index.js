@@ -44,10 +44,10 @@ $( document ).ready(function() {
 });
 
 function getVIN(){
-	var txt = $("#vinTxtBox").val();
-	var url = "http://vpcsvc.azurewebsites.net/BOMInstallSvc.svc/work/1/" + txt + "?callback=?";
+	var vin = $("#lookupVIN").val();
+	var url = "http://vpcsvc.azurewebsites.net/BOMInstallSvc.svc/work/1/" + vin + "?callback=?";
 
-	if (txt == "")
+	if (vin == "")
 		alert("Please enter or scan a VIN");
 	else
 	{
@@ -66,7 +66,9 @@ function getVIN(){
 			timeout: 3000,
 			success: function (data, status) {
 
-					$("#vehicleModel").html(data.Series);
+					$("body").pagecontainer("change", "#process", {});
+					$("#processVIN").html(vin);
+					$("#processModel").html(data.Series);
 
 					setTimeout(function(){
 						$.mobile.loading("hide");
