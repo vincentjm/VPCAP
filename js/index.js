@@ -74,7 +74,7 @@ function getVIN(){
 
 			},
 			error: function (XHR, textStatus, errorThrown) {
-				alert("Error getting parts data");
+				alert("Error getting data");
 
 				setTimeout(function(){
 					$.mobile.loading("hide");
