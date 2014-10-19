@@ -76,7 +76,7 @@ function getVIN(){
 
 			},
 			error: function (XHR, textStatus, errorThrown) {
-				alert("Error getting data");
+				alert("VIN not found");
 
 				setTimeout(function(){
 					$.mobile.loading("hide");
