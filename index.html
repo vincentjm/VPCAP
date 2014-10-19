@@ -10,7 +10,14 @@
 		<!-- jQueryMobileCSS - original without styling -->
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
 
-        <link rel="stylesheet" href="css/bootstrap.css" />
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.red.css" id='jQMnDColor' />
 
 		<!-- jQuery / jQueryMobile Scripts -->
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -25,10 +32,10 @@
     </head>
     <body >
 
-    <div data-role="page" data-theme='c'>
+    <div data-role="page" data-theme='b'>
 
 
-        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='c'>
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
             <a href="index.html" data-ajax="false"><i class='fa fa-bars'></i></a>
             <h1>VPC Appearance Products</h1>
             <h5>Station 1</h5>
@@ -45,26 +52,26 @@
 
                     <li data-role="fieldcontain">
                         <label for="vin">&nbsp;&nbsp;VIN</label>
-                        <input type="text" name="vin" id="vinTxtBox" value="" autofocus data-clear-btn="true" placeholder="Type or scan VIN here ..." />
+                        <input type="text" name="vin" id="vinTxtBox" value="" autofocus data-clear-btn="true" placeholder="Type or scan VIN here ...">
                     </li>
 
                     <li data-role="fieldcontain">
                         <label for="vehicleModel">&nbsp;&nbsp;Model</label>
-                        <label id="vehicleModel" name="vehicleModel" value="" />
+                        <label id="vehicleModel" name="vehicleModel" value="">
                     </li>
 
 					<h2>&nbsp;</h2>
 					<h2>&nbsp;</h2>
 
                     <li>
-							<button type="button" id="vinlookup" data-inline='false'></i>Lookup</button>
+							<button type="button" id="vinlookup" data-inline='false'><i class='lIcon fa fa-check'></i>Lookup</button>
                     </li>
                 </ul>
 
 
 		</div>
 
-		<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='c'>
+		<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
 			<div data-role="navbar">
 				<ul>
 					<li><a href="stationsetup.html"><i class='blIcon fa fa-tablet'></i>Station Setup</a></li>
