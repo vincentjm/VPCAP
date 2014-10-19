@@ -26,7 +26,7 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // `load`, `deviceready`, `offline`, and `online`.
     bindEvents: function() {
-        document.getElementById('scan').addEventListener('click', this.scan, false);
+//        document.getElementById('scan').addEventListener('click', this.scan, false);
 
 		FastClick.attach(document.body);
 
