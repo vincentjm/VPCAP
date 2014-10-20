@@ -70,7 +70,7 @@ function getVIN(){
 					$("#processModel").html(data.Series);
 
 					var AccessoryCode = jsontolist(data,"accessories");
-					$("#processAccesory").html(AccessoryCode);
+					$("#processAccessory").html(AccessoryCode);
 					//$("#processStartTime").html(processStart);
 					setTimeout(function(){
 						$.mobile.loading("hide");
@@ -129,14 +129,14 @@ function jsontolist(data, cat){
 			list += "<p><label style=\"font-weight:bold;display:inline;\">" + "Installation Expected:" + "&nbsp;&nbsp;"+ " </label> " ;
 			if($.trim(value.ExpectedInstalled) == "true" )
 			{
-				list += "True"+ "&nbsp;&nbsp;&nbsp;&nbsp;";
+				list += "True";
 			}
 			else
 			{
-				list += "False"+ "&nbsp;&nbsp;&nbsp;&nbsp;";
+				list += "False";
 			}
 			list += "<label style=\"font-weight:bold;display:inline;\">" + "Expected Installation Time(mins):   " + " </label>  "+ "&nbsp;&nbsp;" + $.trim(value.InstallMinutes) + "</p>";
-			list += "<div><label style=\"font-weight:bold;display:inline;\">" + "Actual Installation Time(mins):" + "&nbsp;&nbsp;"+ " </label> " ;
+			list += "<div>" ;
 			list += "<label id=\""+ $.trim(value.AccessoryCode)+ $.trim(value.AccessoryID)+"\" style=\"display:inline;\"> </label></div>";
 			list += "<label id=\"Ct"+ $.trim(value.AccessoryCode)+ $.trim(value.AccessoryID)+"\" style=\"display:none\"> </label></div>";
 			list += "<button type='submit' id='btnStart' onclick='fnStartInstall(\"" + $.trim(value.AccessoryCode)+ $.trim(value.AccessoryID)+"\")'>Start Installation</button>" + "&nbsp;&nbsp;&nbsp;&nbsp;";
