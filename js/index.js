@@ -70,9 +70,11 @@ function getVIN(){
 					$("#processModel").html(data.Series);
 					var AccessoryCode = jsontolist(data,"accessories", "true");
 					$("#requiredacc").html(AccessoryCode);
+					$("#requiredacc").trigger("create")
 
 					AccessoryCode = jsontolist(data,"accessories", "false");
 					$("#optionalacc").html(AccessoryCode);
+					$("#optionalacc").trigger("create")
 
 					setTimeout(function(){
 						$.mobile.loading("hide");
@@ -131,8 +133,8 @@ function jsontolist(data, cat, reqd){
 			list += "<fieldset data-role='controlgroup'>";
 
 			list += "<legend>";
-			list += $.trim(value.AccessoryCode) + " - " + $.trim(value.Description);
-			list += " <br/> Expected BOM Time - ";
+			list += "&nbsp;&nbsp;&nbsp;&nbsp;" + $.trim(value.AccessoryCode) + " - " + $.trim(value.Description);
+			list += " <br/> &nbsp;&nbsp;&nbsp;&nbsp;Expected BOM Time - ";
 
 			list += $.trim(value.InstallMinutes) + "mins";
 			list += "</legend>" ;
@@ -144,8 +146,6 @@ function jsontolist(data, cat, reqd){
 
 	if(!gotone)
 		list = "";
-
-alert(list);
 
 	return list;
 }
