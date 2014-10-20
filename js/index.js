@@ -38,6 +38,10 @@ $( document ).ready(function() {
 		getVIN();
 	});
 
+	$('#vincomplete').click(function() {
+		completeVIN();
+	});
+
 	$.ajaxSetup({
 		timeout: 2*1000
 	});
@@ -68,7 +72,6 @@ function getVIN(){
 					$("body").pagecontainer("change", "#process", {});
 					$("#processVIN").html(vin);
 					$("#processModel").html(data.Series);
-					$("#vehimg").attr("src","img/" + data.Series.substr(0,5) + ".png");
 					var AccessoryCode = jsontolist(data,"accessories", "true");
 					$("#requiredacc").html(AccessoryCode);
 					$("#requiredacc").trigger("create")
@@ -94,11 +97,11 @@ function getVIN(){
 }
 
 function completeVIN(){
-	var vin = $("#lookupVIN").val();
-	var url = "http://vpcsvc.azurewebsites.net/BOMInstallSvc.svc/work/1/" + vin + "?callback=?";
+	var vin = $("#processVIN").text();
+	var url = "http://vpcsvc.azurewebsites.net/BOMInstallSvc.svc/complete/" + vin + "?callback=?";
 
 	if (vin == "")
-		alert("Please enter or scan a VIN");
+		alert("Error completing VIN");
 	else
 	{
 		setTimeout(function(){
@@ -108,31 +111,28 @@ function completeVIN(){
 			});
 		}, 1);
 
-		//call service to get data for vin
 		$.jsonp({
 			url: url,
 			dataType: "jsonp",
 			timeout: 3000,
 			success: function (data, status) {
 
-					$("body").pagecontainer("change", "#process", {});
-					$("#processVIN").html(vin);
-					$("#processModel").html(data.Series);
-					var AccessoryCode = jsontolist(data,"accessories", "true");
-					$("#requiredacc").html(AccessoryCode);
-					$("#requiredacc").trigger("create")
-
-					AccessoryCode = jsontolist(data,"accessories", "false");
-					$("#optionalacc").html(AccessoryCode);
-					$("#optionalacc").trigger("create")
-
+					$("body").pagecontainer("change", "#complete", {});
+					$("#completeVIN").html(vin);
+					$("#completeModel").html(data.Series);
+					$("#lookupVIN").val('');
 					setTimeout(function(){
 						$.mobile.loading("hide");
 					}, 1);
 
 			},
 			error: function (XHR, textStatus, errorThrown) {
-				alert("VIN not found");
+
+
+					$("body").pagecontainer("change", "#complete", {});
+					$("#completeVIN").html(vin);
+					$("#completeModel").html(data.Series);
+					$("#lookupVIN").val('');
 
 				setTimeout(function(){
 					$.mobile.loading("hide");

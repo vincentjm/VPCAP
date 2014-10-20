@@ -89,15 +89,8 @@
 
                     <li data-role="fieldcontain">
                         <label for="processModel">&nbsp;&nbsp;Model</label>
-                        <div>
-						<img style="width: 100px; float: left;" name="processModel" id="vehimg" src="">
                         <label id="processModel" name="processModel" value="">
-                        </div>
                     </li>
-
-					<li>
-						<div id="processAccessory"></div>
-					</li>
 
         <div data-role="content">
 
@@ -114,9 +107,49 @@
         </div>
 
                     <li>
-							<button type="submit" id="vinlookup" data-inline='false'><i class='lIcon fa fa-check'></i>Complete</button>
+							<button type="submit" id="vincomplete" data-inline='false'><i class='lIcon fa fa-check'></i>Complete</button>
                     </li>
                 </ul>
+
+		</div>
+
+		<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html"><i class='blIcon fa fa-car'></i>Process Vehicle</a></li>
+					<li><a href="stationsetup.html"><i class='blIcon fa fa-tablet'></i>Station Setup</a></li>
+					<li><a href="workersetup.html"><i class='blIcon fa fa-user'></i>Worker Setup</a></li>
+				</ul>
+			</div>
+		</div>
+
+    </div>
+
+    <div data-role="page" id="complete" data-theme='b'>
+
+
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <h1>VPC Appearance Products</h1>
+            <h5>Station 1</h5>
+        </div>
+
+        <div data-role="content">
+
+                <ul data-role="listview" data-inset="true">
+
+                    <li data-role="fieldcontain">
+                        <label for="completeVIN">&nbsp;&nbsp;VIN</label>
+                        <label id="completeVIN" name="completeVIN" value="">
+                    </li>
+
+                    <li data-role="fieldcontain">
+                        <label for="completeModel">&nbsp;&nbsp;Model</label>
+                        <label id="completeModel" name="completeModel" value="">
+                    </li>
+
+                    <li data-role="fieldcontain">
+                        <label>&nbsp;&nbsp;Vehicle has been completed successfully</label>
+                    </li>
 
 		</div>
 
