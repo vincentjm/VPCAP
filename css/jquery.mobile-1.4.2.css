@@ -2485,7 +2485,7 @@ button.ui-btn-icon-notext,
 	.ui-field-contain .ui-controlgroup-label,
 	.ui-field-contain > .ui-rangeslider > label {
 		float: left;
-		width: 20%;
+		width: 45%;
 		margin: .5em 2% 0 0;
 	}
 	.ui-popup .ui-field-contain > label,
@@ -2498,7 +2498,7 @@ button.ui-btn-icon-notext,
 	.ui-field-contain > label ~ [class*="ui-"],
 	.ui-field-contain .ui-controlgroup-controls {
 		float: left;
-		width: 78%;
+		width: 12%;
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		-ms-box-sizing: border-box;
