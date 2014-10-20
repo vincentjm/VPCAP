@@ -59,7 +59,6 @@ function getVIN(){
 		}, 1);
 
 		//call service to get data for vin
-
 		$.jsonp({
 			url: url,
 			dataType: "jsonp",
@@ -70,6 +69,9 @@ function getVIN(){
 					$("#processVIN").html(vin);
 					$("#processModel").html(data.Series);
 
+					var AccessoryCode = jsontolist(data,"accessories");
+					$("#processAccesory").html(AccessoryCode);
+					//$("#processStartTime").html(processStart);
 					setTimeout(function(){
 						$.mobile.loading("hide");
 					}, 1);
@@ -86,30 +88,67 @@ function getVIN(){
 	}
 }
 
+function fnCompleteInstall(Code)
+{
+	var UnInstallTime = new Date();
+	var UnInstalllbl = "#" + Code;
+	var Installlbl = "#Ct" + Code;
+
+	var InstallTime = Date.parse($(Installlbl).html());
+	var TimeForIntsall = ((UnInstallTime - InstallTime)/60000).toFixed(1);
+	$(UnInstalllbl).html(TimeForIntsall);
+}
+
+function fnCancelInstall(Code)
+{
+	var UnInstallTime = new Date();
+	var UnInstalllbl = "#" + Code;
+	var Installlbl = "#Ct" + Code;
+
+	var TimeForIntsall = "0 (Installation was cancelled)";
+	$(UnInstalllbl).html(TimeForIntsall);
+}
+
+function fnStartInstall(Code)
+{
+	var InstallTime = new Date();
+	var Installlbl = "#Ct" + Code;
+	$(Installlbl).html(InstallTime);
+}
+
 function jsontolist(data, cat){
 	var gotone = false;
-	var list = "<div data-role=\"collapsible\">";
-	list += "<h4>"+cat+"</h4>";
-	$.each( data.ParentPart, function( index, value ){
-		if(value.Category == cat)
+	var list = "<div data-role='collapsible' data-collapsed='false'>";
+	list += "<h4>"+"Accessory Details"+"</h4>";
+	$.each( data.accessories, function( index, value ){
+		if(value.AccessoryCode != "")
 		{
 			gotone = true;
-			list += "<div data-role=\"collapsible\">";
-			list += "<h4>" + $.trim(value.PartNumber) + " - " + $.trim(value.PartName) + "</h4>";
-			//list += "<p>" + $.trim(value.PartNumber) + " - " + $.trim(value.PartName) + "</p>";
-			if(value.ChildPart != null)
+			list += "<div data-role='collapsible' data-collapsed='false'>";
+			list += "<h4>" + "Accessory" + " - " + $.trim(value.AccessoryCode) + " - " + $.trim(value.Description) + "</h4>";
+			list += "<p><label style=\"font-weight:bold;display:inline;\">" + "Installation Expected:" + "&nbsp;&nbsp;"+ " </label> " ;
+			if($.trim(value.ExpectedInstalled) == "true" )
 			{
-				$.each( value.ChildPart, function( index2, value2 ){
-					//list += "<div data-role=\"collapsible\">";
-					//list += "<h4>" + $.trim(value2.PartNumber) + " - " + $.trim(value2.PartName) + "</h4>";
-					list += "<p>" + $.trim(value2.PartNumber) + " - " + $.trim(value2.PartName) + "</p>";
-				});
+				list += "True"+ "&nbsp;&nbsp;&nbsp;&nbsp;";
 			}
+			else
+			{
+				list += "False"+ "&nbsp;&nbsp;&nbsp;&nbsp;";
+			}
+			list += "<label style=\"font-weight:bold;display:inline;\">" + "Expected Installation Time(mins):   " + " </label>  "+ "&nbsp;&nbsp;" + $.trim(value.InstallMinutes) + "</p>";
+			list += "<div><label style=\"font-weight:bold;display:inline;\">" + "Actual Installation Time(mins):" + "&nbsp;&nbsp;"+ " </label> " ;
+			list += "<label id=\""+ $.trim(value.AccessoryCode)+ $.trim(value.AccessoryID)+"\" style=\"display:inline;\"> </label></div>";
+			list += "<label id=\"Ct"+ $.trim(value.AccessoryCode)+ $.trim(value.AccessoryID)+"\" style=\"display:none\"> </label></div>";
+			list += "<button type='submit' id='btnStart' onclick='fnStartInstall(\"" + $.trim(value.AccessoryCode)+ $.trim(value.AccessoryID)+"\")'>Start Installation</button>" + "&nbsp;&nbsp;&nbsp;&nbsp;";
+			list += "<button type='submit' id='btnComplete' onclick='fnCompleteInstall(\"" + $.trim(value.AccessoryCode)+ $.trim(value.AccessoryID)+"\")'>Installation Complete</button>"+ "&nbsp;&nbsp;&nbsp;&nbsp;";
+			list += "<button type='cancel' id='btnUnInstall' onclick='fnCancelInstall(\"" + $.trim(value.AccessoryCode)+ $.trim(value.AccessoryID)+"\")'>UnInstall</button>";
 			list += "</div>";
 		}
 	});
 	list += "</div>";
+
 	if(!gotone)
 		list = "";
+
 	return list;
 }
