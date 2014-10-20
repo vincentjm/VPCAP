@@ -68,10 +68,12 @@ function getVIN(){
 					$("body").pagecontainer("change", "#process", {});
 					$("#processVIN").html(vin);
 					$("#processModel").html(data.Series);
+					var AccessoryCode = jsontolist(data,"accessories", "true");
+					$("#requiredacc").html(AccessoryCode);
 
-					var AccessoryCode = jsontolist(data,"accessories");
-					$("#processAccessory").html(AccessoryCode);
-					//$("#processStartTime").html(processStart);
+					AccessoryCode = jsontolist(data,"accessories", "false");
+					$("#optionalacc").html(AccessoryCode);
+
 					setTimeout(function(){
 						$.mobile.loading("hide");
 					}, 1);
@@ -116,39 +118,34 @@ function fnStartInstall(Code)
 	$(Installlbl).html(InstallTime);
 }
 
-function jsontolist(data, cat){
+function jsontolist(data, cat, reqd){
 	var gotone = false;
-	var list = "<div data-role='collapsible' data-collapsed='false'>";
-	list += "<h4>"+"Accessory Details"+"</h4>";
+
+	var list = "";
+
 	$.each( data.accessories, function( index, value ){
-		if(value.AccessoryCode != "")
+		if(value.AccessoryCode != "" && $.trim(value.ExpectedInstalled) == reqd )
 		{
 			gotone = true;
-			list += "<div data-role='collapsible' data-collapsed='false'>";
-			list += "<h4>" + "Accessory" + " - " + $.trim(value.AccessoryCode) + " - " + $.trim(value.Description) + "</h4>";
-			list += "<p><label style=\"font-weight:bold;display:inline;\">" + "Installation Expected:" + "&nbsp;&nbsp;"+ " </label> " ;
-			if($.trim(value.ExpectedInstalled) == "true" )
-			{
-				list += "True";
-			}
-			else
-			{
-				list += "False";
-			}
-			list += "<label style=\"font-weight:bold;display:inline;\">" + "Expected Installation Time(mins):   " + " </label>  "+ "&nbsp;&nbsp;" + $.trim(value.InstallMinutes) + "</p>";
-			list += "<div>" ;
-			list += "<label id=\""+ $.trim(value.AccessoryCode)+ $.trim(value.AccessoryID)+"\" style=\"display:inline;\"> </label></div>";
-			list += "<label id=\"Ct"+ $.trim(value.AccessoryCode)+ $.trim(value.AccessoryID)+"\" style=\"display:none\"> </label></div>";
-			list += "<button type='submit' id='btnStart' onclick='fnStartInstall(\"" + $.trim(value.AccessoryCode)+ $.trim(value.AccessoryID)+"\")'>Start Installation</button>" + "&nbsp;&nbsp;&nbsp;&nbsp;";
-			list += "<button type='submit' id='btnComplete' onclick='fnCompleteInstall(\"" + $.trim(value.AccessoryCode)+ $.trim(value.AccessoryID)+"\")'>Installation Complete</button>"+ "&nbsp;&nbsp;&nbsp;&nbsp;";
-			list += "<button type='cancel' id='btnUnInstall' onclick='fnCancelInstall(\"" + $.trim(value.AccessoryCode)+ $.trim(value.AccessoryID)+"\")'>UnInstall</button>";
-			list += "</div>";
+            list += "<li data-role='fieldcontain'>";
+			list += "<fieldset data-role='controlgroup'>";
+
+			list += "<legend>";
+			list += $.trim(value.AccessoryCode) + " - " + $.trim(value.Description);
+			list += " <br/> Expected BOM Time - ";
+
+			list += $.trim(value.InstallMinutes) + "mins";
+			list += "</legend>" ;
+			list += "<input type='checkbox' name='checkbox-" + $.trim(value.AccessoryID) + "' id='checkbox-" + $.trim(value.AccessoryID) + "'>";
+			list += "<label for='checkbox-" + $.trim(value.AccessoryID) + "'>Installed</label>";
+			list += "</fieldset></li>";
 		}
 	});
-	list += "</div>";
 
 	if(!gotone)
 		list = "";
+
+alert(list);
 
 	return list;
 }
