@@ -68,6 +68,7 @@ function getVIN(){
 					$("body").pagecontainer("change", "#process", {});
 					$("#processVIN").html(vin);
 					$("#processModel").html(data.Series);
+					$("#vehimg").attr("src","img/" + data.Series.substr(0,5) + ".png");
 					var AccessoryCode = jsontolist(data,"accessories", "true");
 					$("#requiredacc").html(AccessoryCode);
 					$("#requiredacc").trigger("create")
@@ -91,6 +92,59 @@ function getVIN(){
 		});
 	}
 }
+
+function completeVIN(){
+	var vin = $("#lookupVIN").val();
+	var url = "http://vpcsvc.azurewebsites.net/BOMInstallSvc.svc/work/1/" + vin + "?callback=?";
+
+	if (vin == "")
+		alert("Please enter or scan a VIN");
+	else
+	{
+		setTimeout(function(){
+			$.mobile.loading("show",{
+				text: "Loading...",
+				textVisible: true
+			});
+		}, 1);
+
+		//call service to get data for vin
+		$.jsonp({
+			url: url,
+			dataType: "jsonp",
+			timeout: 3000,
+			success: function (data, status) {
+
+					$("body").pagecontainer("change", "#process", {});
+					$("#processVIN").html(vin);
+					$("#processModel").html(data.Series);
+					var AccessoryCode = jsontolist(data,"accessories", "true");
+					$("#requiredacc").html(AccessoryCode);
+					$("#requiredacc").trigger("create")
+
+					AccessoryCode = jsontolist(data,"accessories", "false");
+					$("#optionalacc").html(AccessoryCode);
+					$("#optionalacc").trigger("create")
+
+					setTimeout(function(){
+						$.mobile.loading("hide");
+					}, 1);
+
+			},
+			error: function (XHR, textStatus, errorThrown) {
+				alert("VIN not found");
+
+				setTimeout(function(){
+					$.mobile.loading("hide");
+				}, 1);
+			}
+		});
+	}
+}
+
+
+
+
 
 function fnCompleteInstall(Code)
 {
