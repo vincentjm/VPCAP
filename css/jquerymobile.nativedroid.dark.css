@@ -10,8 +10,12 @@
 
 }
 
-.ui-header.ui-bar-b,.ui-footer.ui-bar-b {
-	background-color: #a00;
+.ui-header.ui-bar-b{
+	background-color: #000;
+}
+
+.ui-footer.ui-bar-b {
+	background-color: #600;
 }
 
 .ui-overlay-b .ui-page-theme-b {
